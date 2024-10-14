@@ -29,26 +29,26 @@ the rules fils are installed in the /usr/local/etc/rules
 # Configure as ids
 set up your ip address in HOME_NET, then configure EXTERNAL_NET = !$HOME_NET
 include the rules files in the ips dictionary
+
+
 rules =[[
     include /usr/local/etc/rules/snort3-community-rules/snort3-community.rules
-   
-    ]]
+       ]]
 add the following line and run the snort as Intrusion Detection System
+
 
 # Configure as ips
 In order for the snort to work as the ips it needs to drop or reject the network traffic that matches the signatures in our rules file.
 change the ips dictionary as below
--- rules
+
+
 ips = {
     -- use this to enable decoder and inspector alerts
     mode = inline,
     enable_builtin_rules = true,
-    
-
     -- use include for rules files; be sure to set your path
     -- note that rules files can include other rules files
     -- (see also related path vars at the top of snort_defaults.lua)
-
     variables = default_variables,
     action_override = 'reject',
     rules =[[
@@ -57,8 +57,10 @@ ips = {
     ]]
 }
 
+
 -The data acquisition modules also needs to be changed into from pcap, so we will be using afpacket to stop packets in realtime.
 -add this below the ips dictionary
+
 
 daq = {
 	module_dirs = {
@@ -74,6 +76,7 @@ daq = {
 		}
 	}
 }
+
 
 make changes to alert_fast, alert_full to gnerate alerts and log it.
 alert_fast = { file = true }
