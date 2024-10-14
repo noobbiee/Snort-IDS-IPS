@@ -38,6 +38,7 @@ add the following line and run the snort as Intrusion Detection System
 # Configure as ips
 In order for the snort to work as the ips it needs to drop or reject the network traffic that matches the signatures in our rules file.
 change the ips dictionary as below
+-- rules
 ips = {
     -- use this to enable decoder and inspector alerts
     mode = inline,
