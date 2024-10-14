@@ -13,14 +13,19 @@ The two script provided will help you to install and set up the snort
 - configure the snort as ids or ips by refering to the configuration files presented
 
 # Installation
-- clone the repository using bash
-  sudo git clone https://github.com/noobbiee/Snort-IDS-IPS/
+clone the repository using bash
+
+```
+sudo git clone https://github.com/noobbiee/Snort-IDS-IPS/
+```
 
 # Run the script
 navigate inside the Snort-IDS-IPS
 Then
 make the script executable by using
+```
 sudo chmod 777 install_snort3.sh
+```
 
 run the script as root or give root access to the script
 and wait for it to install 
@@ -30,10 +35,11 @@ the rules fils are installed in the /usr/local/etc/rules
 set up your ip address in HOME_NET, then configure EXTERNAL_NET = !$HOME_NET
 include the rules files in the ips dictionary
 
-
+```
 rules =[[
     include /usr/local/etc/rules/snort3-community-rules/snort3-community.rules
        ]]
+```
 add the following line and run the snort as Intrusion Detection System
 
 
@@ -41,7 +47,7 @@ add the following line and run the snort as Intrusion Detection System
 In order for the snort to work as the ips it needs to drop or reject the network traffic that matches the signatures in our rules file.
 change the ips dictionary as below
 
-
+```
 ips = {
     -- use this to enable decoder and inspector alerts
     mode = inline,
@@ -56,12 +62,11 @@ ips = {
     
     ]]
 }
-
-
+```
 -The data acquisition modules also needs to be changed into from pcap, so we will be using afpacket to stop packets in realtime.
 -add this below the ips dictionary
 
-
+```
 daq = {
 	module_dirs = {
 		'/usr/local/lib/',
@@ -76,6 +81,7 @@ daq = {
 		}
 	}
 }
+```
 
 
 make changes to alert_fast, alert_full to gnerate alerts and log it.
