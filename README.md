@@ -21,10 +21,17 @@ sudo git clone https://github.com/noobbiee/Snort-IDS-IPS/
 
 # Run the script
 navigate inside the Snort-IDS-IPS
+```
+cd Snort-IDS-IPS
+```
 Then
 make the script executable by using
 ```
 sudo chmod 777 install_snort3.sh
+```
+Then run the script as root or provide root priviliges
+```
+sudo ./install_snort3.sh
 ```
 
 run the script as root or give root access to the script
@@ -85,5 +92,21 @@ daq = {
 
 
 make changes to alert_fast, alert_full to gnerate alerts and log it.
+```
 alert_fast = { file = true }
 alert_full = { file = true }
+```
+
+# Run the snort
+As ids
+```
+sudo snort -c /usr/local/etc/snort/snort.lua -i eth0 -A alert_fast -s 65535 -k none
+```
+As packet logger
+```
+sudo snort -c /usr/local/etc/snort/snort.lua -Q --daq afpacket -i eth0 -L pcap -l /var/log/snort
+```
+As ips
+```
+sudo snort -c /usr/local/etc/snort/snort.lua -Q --daq afpacket -i eth0 -A alert_fast -l /var/log/snort
+```
