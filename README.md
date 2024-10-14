@@ -58,6 +58,7 @@ ips = {
 
 -The data acquisition modules also needs to be changed into from pcap, so we will be using afpacket to stop packets in realtime.
 -add this below the ips dictionary
+
 daq = {
 	module_dirs = {
 		'/usr/local/lib/',
@@ -72,6 +73,7 @@ daq = {
 		}
 	}
 }
+
 make changes to alert_fast, alert_full to gnerate alerts and log it.
 alert_fast = { file = true }
 alert_full = { file = true }
