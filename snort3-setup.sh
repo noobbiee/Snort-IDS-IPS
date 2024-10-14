@@ -47,4 +47,4 @@ cd /usr/local/etc/rules
 wget -qo- https://www.snort.org/downloads/community/snort3-community-rules.tar.gz
 tar -xzf snort3-community-rules.tar.gz
 
-echo "open the configuration file in the 
+echo "open the configuration file and add the Home network and include the rulesfiles path to assign rules to your snort machine"
