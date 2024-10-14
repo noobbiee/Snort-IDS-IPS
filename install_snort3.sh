@@ -94,37 +94,5 @@ touch /etc/snort/rules/local.rules
 touch /etc/snort/snort_defaults.lua
 touch /etc/snort/file_magic.lua
 
-# Create Systemd Service for Snort
-echo "Creating systemd service for Snort..."
-cat <<EOF > /etc/systemd/system/snort.service
-[Unit]
-Description=Snort NIDS Daemon
-After=network.target
 
-[Service]
-Type=simple
-ExecStart=/usr/local/bin/snort -c /etc/snort/snort.lua -i eth0 -A console -s 65535 -k none
-Restart=on-failure
 
-[Install]
-WantedBy=multi-user.target
-EOF
-
-# Enable and Start Snort Service
-echo "Enabling and starting Snort service..."
-systemctl daemon-reload
-systemctl enable snort.service
-systemctl start snort.service
-
-echo "Snort installation and configuration complete."
-echo "Use 'systemctl status snort.service' to check the status of the Snort service."
-
-# Perform a basic test to confirm Snort installation
-echo "Performing a basic test to confirm Snort installation..."
-snort -V
-
-if [ $? -eq 0 ]; then
-    echo "Snort installation confirmed successfully."
-else
-    echo "There was an issue confirming the Snort installation."
-fi
