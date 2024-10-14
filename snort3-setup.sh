@@ -4,7 +4,7 @@
 set -e
 
 #check if the script is run as root
-if [[ $EUID -ne- 0 ]]; then
+if [[ $EUID -ne 0 ]]; then
 	echo "This script must be run as root"
 	exit 1
 fi
@@ -46,3 +46,5 @@ mkdir /usr/local/etc/rules
 cd /usr/local/etc/rules
 wget -qo- https://www.snort.org/downloads/community/snort3-community-rules.tar.gz
 tar -xzf snort3-community-rules.tar.gz
+
+echo "open the configuration file in the 
